@@ -1,0 +1,10 @@
+htv-studio/
+├── htv studio website.html
+├── style css htvstudio.css
+├── content/
+│   └── videos.json
+├── videos/
+│   ├── hero.mp4
+│   ├── edit1.mp4
+│   ├── reel1.mp4
+│   └── ad1.mp4
