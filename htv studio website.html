@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>HTV Studio | Premium Video Editing Agency</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+<h1>HTV Studio</h1>
+<div>
+<a href="#services">Services</a>
+<a href="#work">Portfolio</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+
+<section class="hero">
+<video autoplay muted loop>
+<source src="videos/hero.mp4" type="video/mp4">
+</video>
+<div class="content">
+<h1>HTV Studio</h1>
+<p>Premium Cinematic Video Editing Agency</p>
+<a class="btn" href="#contact">Work With Us</a>
+</div>
+</section>
+
+<section id="services" class="services reveal">
+<h2>What We Do</h2>
+<div class="grid">
+<div class="card">🎬 Video Editing</div>
+<div class="card">🎨 Color Grading</div>
+<div class="card">📢 CGI Ads</div>
+<div class="card">📱 Reels & Shorts</div>
+<div class="card">🎥 Cinematic Shoots</div>
+<div class="card">🖥 Motion Graphics</div>
+</div>
+</section>
+
+<section id="work" class="reveal">
+<h2>Video Samples</h2>
+<p style="text-align:center;opacity:.7;margin-bottom:30px">Browse our previous work by category</p>
+<div class="filters">
+<button class="active" onclick="filterVideos('all')">All</button>
+<button onclick="filterVideos('editing')">Editing</button>
+<button onclick="filterVideos('reels')">Reels</button>
+<button onclick="filterVideos('ads')">CGI & Ads</button>
+<button onclick="filterVideos('cinematic')">Cinematic</button>
+</div>
+<div class="grid" id="videoGrid"></div>
+</section>
+
+<section class="testimonials reveal">
+<h2>Testimonials</h2>
+<div class="grid">
+<div class="testimonial">"Amazing edits and super professional team." – Creator</div>
+<div class="testimonial">"Cinematic quality that boosted our brand." – Business</div>
+<div class="testimonial">"Fast delivery and premium results." – Influencer</div>
+</div>
+</section>
+
+<section class="clients reveal">
+<h2>Worked With</h2>
+<span>Creators</span><span>Brands</span><span>Startups</span><span>Agencies</span>
+</section>
+
+<section id="contact" class="contact-modern reveal">
+<h2>Contact & DM Us</h2>
+<div class="grid">
+<div class="card">📸 Instagram<a href="https://instagram.com/htvstudio" target="_blank">@htvstudio</a></div>
+<div class="card">💬 WhatsApp<a href="https://wa.me/919999999999" target="_blank">Chat on WhatsApp</a></div>
+<div class="card">📧 Email<a href="mailto:htvstudio@gmail.com">htvstudio@gmail.com</a></div>
+</div>
+</section>
+
+<a class="whatsapp" href="https://wa.me/919999999999" target="_blank">💬</a>
+
+<footer>© 2026 HTV Studio • All Rights Reserved</footer>
+
+<script>
+// Video Portfolio Admin Editable
+fetch('content/videos.json')
+.then(res => res.json())
+.then(data => {
+  window.allVideos = data.items;
+  renderVideos('all');
+});
+function renderVideos(category){
+  const grid = document.getElementById('videoGrid');
+  grid.innerHTML = '';
+  allVideos.filter(v => category==='all'||v.type===category).forEach(v=>{
+    const div=document.createElement('div');
+    div.className='portfolio-item';
+    div.innerHTML=`<video src="${v.src}" controls muted></video>`;
+    grid.appendChild(div);
+  });
+}
+function filterVideos(category){
+  document.querySelectorAll('.filters button').forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+  renderVideos(category);
+}
+
+// Scroll reveal
+window.addEventListener('scroll',()=>{
+ document.querySelectorAll('.reveal').forEach(el=>{
+  if(el.getBoundingClientRect().top<window.innerHeight-100) el.classList.add('active')
+ })
+})
+</script>
+
+</body>
+</html>
