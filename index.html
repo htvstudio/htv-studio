@@ -43,13 +43,16 @@
 <section id="work" class="reveal">
 <h2>Video Samples</h2>
 <p style="text-align:center;opacity:.7;margin-bottom:30px">Browse our previous work by category</p>
-<div class="filters">
-<button class="active" onclick="filterVideos('all')">All</button>
-<button onclick="filterVideos('editing')">Editing</button>
-<button onclick="filterVideos('reels')">Reels</button>
-<button onclick="filterVideos('ads')">CGI & Ads</button>
-<button onclick="filterVideos('cinematic')">Cinematic</button>
+
+  <div class="filters">
+  <button onclick="filterVideos('all')">All</button>
+  <button onclick="filterVideos('editing')">Editing</button>
+  <button onclick="filterVideos('reels')">Reels</button>
+  <button onclick="filterVideos('cgi')">CGI Ads</button>
+  <button onclick="filterVideos('cinematic')">Cinematic</button>
 </div>
+
+    
 <div class="grid" id="videoGrid"></div>
 </section>
 
